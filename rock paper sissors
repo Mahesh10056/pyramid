@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int userChoice, computerChoice;
+    char *choices[] = {"Rock", "Paper", "Scissors"};
+
+    // Seed the random number generator
+    srand(time(0));
+
+    printf("Welcome to Rock, Paper, Scissors!\n");
+    printf("Enter your choice:\n");
+    printf("1. Rock\n2. Paper\n3. Scissors\n");
+    printf("Your choice: ");
+    scanf("%d", &userChoice);
+
+    // Validate input
+    if (userChoice < 1 || userChoice > 3) {
+        printf("Invalid choice. Please run the program again.\n");
+        return 1;
+    }
+
+    // Generate computer choice
+    computerChoice = rand() % 3 + 1;
+
+    printf("You chose: %s\n", choices[userChoice - 1]);
+    printf("Computer chose: %s\n", choices[computerChoice - 1]);
+
+    // Determine winner
+    if (userChoice == computerChoice) {
+        printf("It's a draw!\n");
+    } else if ((userChoice == 1 && computerChoice == 3) ||
+               (userChoice == 2 && computerChoice == 1) ||
+               (userChoice == 3 && computerChoice == 2)) {
+        printf("You win!\n");
+    } else {
+        printf("Computer wins!\n");
+    }
+
+    printf("Thanks for playing!\n");
+    return 0;
+}
