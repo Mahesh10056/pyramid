@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int coin, guess;
+    srand(time(0));
+    coin = rand() % 2; // 0 for Heads, 1 for Tails
+
+    printf("Guess the coin toss:\n0 for Heads, 1 for Tails\n");
+    printf("Enter your guess: ");
+    scanf("%d", &guess);
+
+    if (guess == coin) {
+        printf("Correct! It's %s.\n", coin == 0 ? "Heads" : "Tails");
+    } else {
+        printf("Wrong! It's %s.\n", coin == 0 ? "Heads" : "Tails");
+    }
+
+    return 0;
+}
