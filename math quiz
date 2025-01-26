@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int num1, num2, answer, userAnswer;
+    char operator;
+    srand(time(0));
+
+    num1 = rand() % 10 + 1;
+    num2 = rand() % 10 + 1;
+    int op = rand() % 2; // Randomly select addition or multiplication
+    operator = op == 0 ? '+' : '*';
+    answer = operator == '+' ? num1 + num2 : num1 * num2;
+
+    printf("Solve: %d %c %d = ?\n", num1, operator, num2);
+
+    printf("Your answer: ");
+    scanf("%d", &userAnswer);
+
+    if (userAnswer == answer) {
+        printf("Correct!\n");
+    } else {
+        printf("Wrong! The correct answer is %d.\n", answer);
+    }
+
+    return 0;
+}
