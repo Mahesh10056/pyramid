@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+void shuffle(char *word) {
+    int len = strlen(word);
+    for (int i = len - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        char temp = word[i];
+        word[i] = word[j];
+        word[j] = temp;
+    }
+}
+
+int main() {
+    srand(time(0));
+    
+    char words[][10] = {"apple", "banana", "orange", "grape", "mango"};
+    int index = rand() % 5;
+    
+    char original[10], scrambled[10];
+    strcpy(original, words[index]);
+    strcpy(scrambled, words[index]);
+    
+    shuffle(scrambled);
+    
+    printf("Guess the word: %s\n", scrambled);
+    
+    char guess[10];
+    printf("Enter your guess: ");
+    scanf("%s", guess);
+    
+    if (strcmp(guess, original) == 0)
+        printf("Correct!\n");
+    else
+        printf("Wrong! The word was %s.\n", original);
+
+    return 0;
+}
